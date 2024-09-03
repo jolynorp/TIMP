@@ -1,0 +1,38 @@
+plugins {
+  id 'java'
+  id 'application'
+  id 'org.openjfx.javafxplugin' version '0.0.13'
+  id 'org.beryx.jlink' version '2.25.0'
+
+  id 'org.owasp.dependencycheck' version '8.2.1'
+}
+
+group 'ru.nstu.vehicles'
+version '1.0-SNAPSHOT'
+
+repositories {
+  gradlePluginPortal()
+  mavenCentral()}
+
+ext {
+  junitVersion = '5.10.0'
+}
+
+tasks.withType(JavaCompile).configureEach {
+  options.encoding = 'UTF-8'
+}
+
+application {
+  mainModule = 'ru.nstu.vehicles.app'
+  mainClass = 'ru.nstu.vehicles.app.App'
+}
+
+javafx {
+  version = '21'
+  modules = ['javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+  testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
