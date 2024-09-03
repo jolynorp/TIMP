@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import com.joly.vhickes.view.components.NumberField?>
+
+<HBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.joly.vhickes.controller.MainController">
+    <MenuBar>
+        <Menu text="Sim">
+            <MenuItem text="Start" fx:id="menuStartButton"/>
+            <MenuItem text="Stop" fx:id="menuStopButton" disable="true"/>
+        </Menu>
+        <Menu text="Tools">
+            <MenuItem text="Toggle show time" onAction="#handleToggleShowTimeMenu"/>
+            <MenuItem text="Toggle show info" onAction="#handleToggleShowInfoMenu"/>
+        </Menu>
+        <Menu text="Help">
+            <MenuItem text="About" onAction="#handleAbout"/>
+        </Menu>
+    </MenuBar>
+    <AnchorPane prefHeight="400.0" prefWidth="600.0" fx:id="root"/>
+
+    <VBox>
+        <Button fx:id="startButton" text="Start"/>
+        <Button fx:id="stopButton" text="Stop" disable="true"/>
+        <CheckBox fx:id="showStatCheckBox" text="Show"/>
+
+        <fx:define>
+            <ToggleGroup fx:id="showTimeToggleGroup"/>
+        </fx:define>
+
+        <RadioButton fx:id="showTimeRadioButton" text="Show time" toggleGroup="$showTimeToggleGroup" selected="true"/>
+        <RadioButton fx:id="dontShowTimeRadioButton" text="Don't show time" toggleGroup="$showTimeToggleGroup"/>
+        <Label fx:id="timeLabel"/>
+
+
+        <Label text="Automobile N"/>
+        <NumberField fx:id="automobilePeriod" text="3000"/>
+        <Label text="Automobile P"/>
+        <ComboBox fx:id="automobileProbability" promptText="choose"/>
+        <Label text="Motorbike N"/>
+        <NumberField fx:id="motorbikePeriod" text="3000"/>
+        <Label text="Motorbike P"/>
+        <ComboBox fx:id="motorbikeProbability" promptText="choose"/>
+    </VBox>
+</HBox>
